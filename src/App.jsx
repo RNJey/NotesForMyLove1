@@ -48,7 +48,7 @@ export default function App() {
       {/* Pastikan src audio sesuai dengan nama file lagu kamu di folder public */}
       <audio
         ref={audioRef}
-        src="/lagu.mp3"
+        src="/assets/Wikan.mp3"
         loop
         preload="auto"
       />
