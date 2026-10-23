@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 
-// Import Komponen Pemutar Musik & Halaman
 import MusicPlayer from './components/MusicPlayer';
 import Page0Envelope from './components/Page0Envelope';
 import Page1Arjosari from './components/Page1Arjosari';
@@ -21,10 +20,9 @@ export default function App() {
   const prevPage = () => setPage((prev) => Math.max(prev - 1, 0));
   const restartBook = () => setPage(0);
 
-  // Fungsi menyalakan musik pertama kali saat segel amplop disentuh
   const startMusic = () => {
     if (audioRef.current && !isPlaying) {
-      audioRef.current.volume = 0.5; // Volume 50% agar lembut di telinga
+      audioRef.current.volume = 0.5;
       audioRef.current.play().then(() => {
         setIsPlaying(true);
       }).catch((err) => {
@@ -33,7 +31,6 @@ export default function App() {
     }
   };
 
-  // Fungsi tombol on/off musik di atas layar
   const toggleMusic = () => {
     if (!audioRef.current) return;
     if (isPlaying) {
@@ -48,11 +45,10 @@ export default function App() {
   return (
     <div className="min-h-[100dvh] w-full bg-[#2c241d] flex items-center justify-center p-0 sm:p-4 overflow-hidden select-none">
       
-      {/* ELEMEN AUDIO (Looping otomatis) */}
-      {/* Nanti kalau pakai lagu sendiri, ubah src menjadi "/lagu.mp3" */}
+      {/* Pastikan src audio sesuai dengan nama file kamu di folder public */}
       <audio
         ref={audioRef}
-        src="/assets/Wikan.mp3"
+        src="/lagu.mp3"
         loop
         preload="auto"
       />
@@ -66,8 +62,8 @@ export default function App() {
         {/* Efek Bayangan Lipatan Buku di Pinggir Kiri */}
         <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/15 to-transparent pointer-events-none z-20" />
 
-        {/* Area Konten Halaman */}
-        <div className="relative flex-1 w-full h-full overflow-hidden pt-4">
+        {/* PERBAIKAN: Gunakan min-h-0 dan overflow-y-auto agar tidak tertutup navbar bawah */}
+        <div className="relative flex-1 min-h-0 w-full overflow-y-auto overflow-x-hidden pt-8 pb-2">
           <AnimatePresence mode="wait">
             <motion.div
               key={page}
@@ -75,9 +71,8 @@ export default function App() {
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -40, rotateY: 10 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className="w-full h-full p-6 flex flex-col justify-center items-center"
+              className="w-full min-h-full px-5 py-2 sm:p-6 flex flex-col justify-center items-center"
             >
-              {/* Render Halaman 0 - 5 */}
               {page === 0 && (
                 <Page0Envelope
                   onOpenBook={nextPage}
@@ -93,9 +88,9 @@ export default function App() {
           </AnimatePresence>
         </div>
 
-        {/* Navigasi Bawah */}
+        {/* PERBAIKAN: Tambahkan shrink-0 agar tinggi navbar tidak tertekan */}
         {page > 0 && (
-          <div className="h-16 px-6 bg-paperDark/60 backdrop-blur-sm border-t border-black/5 flex items-center justify-between z-30">
+          <div className="h-14 sm:h-16 shrink-0 px-6 bg-paperDark/85 backdrop-blur-sm border-t border-black/5 flex items-center justify-between z-30">
             <button
               onClick={prevPage}
               className="flex items-center gap-1 font-sans text-sm font-semibold text-ink/70 hover:text-ink active:scale-95 transition"

@@ -22,15 +22,15 @@ export default function Page1Arjosari() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between py-2 relative">
+    <div className="w-full h-full flex flex-col justify-between gap-2 py-1 pb-3 sm:pb-2 relative">
       
       {/* Header Halaman & Stiker Draggable */}
-      <div className="flex justify-between items-start z-20">
+      <div className="flex justify-between items-start z-20 shrink-0">
         <div>
-          <span className="font-sans text-[11px] font-bold uppercase tracking-widest text-accent">
+          <span className="font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-accent">
             Chapter 01 • The Beginning
           </span>
-          <h2 className="font-caveat text-3xl font-bold text-ink">
+          <h2 className="font-caveat text-2xl sm:text-3xl font-bold text-ink leading-tight">
             Did U Still Remember This?
           </h2>
         </div>
@@ -40,7 +40,7 @@ export default function Page1Arjosari() {
           drag
           dragConstraints={{ left: -100, right: 20, top: 0, bottom: 200 }}
           whileDrag={{ scale: 1.1, rotate: 5 }}
-          className="cursor-grab active:cursor-grabbing bg-[#e8dccb] border border-[#cbb89d] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1.5 rotate-6"
+          className="cursor-grab active:cursor-grabbing bg-[#e8dccb] border border-[#cbb89d] px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-sm flex items-center gap-1.5 rotate-6 shrink-0"
           title="Geser aku!"
         >
           <MapPin className="w-3.5 h-3.5 text-[#b84a39] fill-[#b84a39]/20" />
@@ -49,22 +49,22 @@ export default function Page1Arjosari() {
       </div>
 
       {/* Area Polaroid Interaktif */}
-      <div className="relative my-auto flex flex-col items-center">
+      <div className="relative my-auto flex flex-col items-center shrink-0">
         
         {/* Washi Tape (Selotip Atas) */}
-        <div className="w-28 h-7 washi-tape -rotate-3 z-20 -mb-3" />
+        <div className="w-20 sm:w-28 h-5 sm:h-7 washi-tape -rotate-3 z-20 -mb-2.5 sm:-mb-3" />
 
         {/* Bingkai Polaroid */}
         <div 
           onMouseMove={handleDevelop}
           onTouchMove={handleDevelop}
           onClick={handleQuickTap}
-          className="bg-[#faf6f0] p-3.5 pb-10 rounded shadow-lg border border-black/5 w-[260px] sm:w-[280px] -rotate-1 relative cursor-pointer touch-none select-none transition-transform hover:rotate-0"
+          className="bg-[#faf6f0] p-2.5 pb-4 sm:p-3.5 sm:pb-10 rounded shadow-lg border border-black/5 w-[225px] sm:w-[280px] -rotate-1 relative cursor-pointer touch-none select-none transition-transform hover:rotate-0"
         >
-          {/* Bingkai Dalam Foto */}
-          <div className="relative w-full h-[210px] bg-[#22201e] overflow-hidden rounded-sm flex items-center justify-center">
+          {/* Bingkai Dalam Foto (150px di HP, 210px di layar besar) */}
+          <div className="relative w-full h-[150px] sm:h-[210px] bg-[#22201e] overflow-hidden rounded-sm flex items-center justify-center">
             
-            {/* GAMBAR ASLI: Ganti URL src ini dengan foto kalian saat KKN di Arjosari */}
+            {/* GAMBAR ASLI */}
             <img
               src="/assets/kenangan.jpeg"
               alt="Memori KKN Arjosari"
@@ -77,17 +77,17 @@ export default function Page1Arjosari() {
 
             {/* Overlay Instruksi (Hilang kalau sudah 100%) */}
             {!isDeveloped && (
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 p-4 text-center pointer-events-none">
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 p-3 sm:p-4 text-center pointer-events-none">
                 <motion.div
                   animate={{ x: [-10, 10, -10] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <Hand className="w-8 h-8 text-white/90 mb-2" />
+                  <Hand className="w-6 h-6 sm:w-8 sm:h-8 text-white/90 mb-1 sm:mb-2" />
                 </motion.div>
-                <p className="font-sans text-xs font-semibold text-white tracking-wide">
+                <p className="font-sans text-[11px] sm:text-xs font-semibold text-white tracking-wide">
                   Usap atau ketuk foto ini untuk mencuci filmnya
                 </p>
-                <span className="font-hand text-lg text-[#f4ece1] mt-1 font-bold">
+                <span className="font-hand text-base sm:text-lg text-[#f4ece1] mt-0.5 sm:mt-1 font-bold">
                   {developProgress}%
                 </span>
               </div>
@@ -95,8 +95,8 @@ export default function Page1Arjosari() {
           </div>
 
           {/* Caption di Bawah Polaroid */}
-          <div className="mt-3 flex justify-between items-center px-1">
-            <span className="font-caveat text-xl font-bold text-ink/80">
+          <div className="mt-2 sm:mt-3 flex justify-between items-center px-1">
+            <span className="font-caveat text-lg sm:text-xl font-bold text-ink/80">
               Our Memories
             </span>
             {isDeveloped && (
@@ -114,15 +114,15 @@ export default function Page1Arjosari() {
           y: isDeveloped ? 0 : 5,
           filter: isDeveloped ? "blur(0px)" : "blur(2px)"
         }}
-        className="bg-[#faf6f0] p-4 rounded-xl shadow-sm border border-[#e6dac8] relative z-10"
+        className="bg-[#faf6f0] p-3 sm:p-4 rounded-xl shadow-sm border border-[#e6dac8] relative z-10 shrink-0"
       >
-        <p className="font-hand text-[16px] leading-relaxed text-ink">
+        <p className="font-hand text-[14px] sm:text-[16px] leading-snug sm:leading-relaxed text-ink">
           {isDeveloped ? (
             <>
               "Lucu sih kalau diingat. Dulu aku sempat berpikir: <span className="underline decoration-accent/60 font-bold">cukup untuk dikagumi saja, atau nekat berjuang buat dapetin hati-nya.</span> Tapi... Yeahhh lihat sekarang, Aku bersyukur banget waktu itu milih buat nggak nyerah begitu aja. Berusaha buat kamu adalah keputusan terbaik yang pernah aku ambil."
             </>
           ) : (
-            <span className="text-ink/50 italic text-sm font-sans flex items-center justify-center gap-2 py-2">
+            <span className="text-ink/50 italic text-xs sm:text-sm font-sans flex items-center justify-center gap-2 py-1 sm:py-2">
               🔒 Selesaikan cuci cetak foto di atas untuk membaca catatan ini...
             </span>
           )}
