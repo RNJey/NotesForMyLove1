@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div className="min-h-[100dvh] w-full bg-[#2c241d] flex items-center justify-center p-0 sm:p-4 overflow-hidden select-none">
       
-      {/* Pastikan src audio sesuai dengan nama file kamu di folder public */}
+      {/* Pastikan src audio sesuai dengan nama file lagu kamu di folder public */}
       <audio
         ref={audioRef}
         src="/lagu.mp3"
@@ -62,8 +62,8 @@ export default function App() {
         {/* Efek Bayangan Lipatan Buku di Pinggir Kiri */}
         <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/15 to-transparent pointer-events-none z-20" />
 
-        {/* PERBAIKAN: Gunakan min-h-0 dan overflow-y-auto agar tidak tertutup navbar bawah */}
-        <div className="relative flex-1 min-h-0 w-full overflow-y-auto overflow-x-hidden pt-8 pb-2">
+        {/* Area Konten Halaman: flex-1 min-h-0 memastikan area ini berhenti tepat di atas navbar */}
+        <div className="relative flex-1 min-h-0 w-full overflow-hidden pt-9">
           <AnimatePresence mode="wait">
             <motion.div
               key={page}
@@ -71,7 +71,8 @@ export default function App() {
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -40, rotateY: 10 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              className="w-full min-h-full px-5 py-2 sm:p-6 flex flex-col justify-center items-center"
+              /* WAJIB h-full (bukan min-h-full) agar Page 0, 3, dan 4 tidak menyusut & saling timpa */
+              className="w-full h-full px-5 py-2 sm:p-6 flex flex-col justify-center items-center"
             >
               {page === 0 && (
                 <Page0Envelope
@@ -88,7 +89,7 @@ export default function App() {
           </AnimatePresence>
         </div>
 
-        {/* PERBAIKAN: Tambahkan shrink-0 agar tinggi navbar tidak tertekan */}
+        {/* Navigasi Bawah: shrink-0 menjaga tinggi navbar tetap stabil */}
         {page > 0 && (
           <div className="h-14 sm:h-16 shrink-0 px-6 bg-paperDark/85 backdrop-blur-sm border-t border-black/5 flex items-center justify-between z-30">
             <button
