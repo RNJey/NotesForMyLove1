@@ -62,7 +62,7 @@ export default function App() {
         {/* Efek Bayangan Lipatan Buku di Pinggir Kiri */}
         <div className="absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-black/15 to-transparent pointer-events-none z-20" />
 
-        {/* Area Konten Halaman: flex-1 min-h-0 memastikan area ini berhenti tepat di atas navbar */}
+        {/* Area Konten Halaman */}
         <div className="relative flex-1 min-h-0 w-full overflow-hidden pt-9">
           <AnimatePresence mode="wait">
             <motion.div
@@ -71,8 +71,8 @@ export default function App() {
               animate={{ opacity: 1, x: 0, rotateY: 0 }}
               exit={{ opacity: 0, x: -40, rotateY: 10 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
-              /* WAJIB h-full (bukan min-h-full) agar Page 0, 3, dan 4 tidak menyusut & saling timpa */
-              className="w-full h-full px-5 py-2 sm:p-6 flex flex-col justify-center items-center"
+              /* UBAH BARIS INI: Gunakan h-full + overflow-y-auto tanpa flex justify-center */
+              className="w-full h-full px-5 py-2 sm:p-6 overflow-y-auto overflow-x-hidden"
             >
               {page === 0 && (
                 <Page0Envelope

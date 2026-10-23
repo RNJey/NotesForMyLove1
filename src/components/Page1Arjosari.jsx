@@ -22,7 +22,8 @@ export default function Page1Arjosari() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between py-2 relative">
+    /* PERUBAHAN DI SINI: min-h-full + gap-4 + pb-6 agar bisa di-scroll sampai bawah */
+    <div className="w-full min-h-full flex flex-col justify-between gap-4 py-2 pb-6 relative">
       
       {/* Header Halaman & Stiker Draggable */}
       <div className="flex justify-between items-start z-20">
@@ -54,17 +55,18 @@ export default function Page1Arjosari() {
         {/* Washi Tape (Selotip Atas) */}
         <div className="w-28 h-7 washi-tape -rotate-3 z-20 -mb-3" />
 
-        {/* Bingkai Polaroid */}
+        {/* Bingkai Polaroid (Setelah 100% tercuci, touch-pan-y aktif agar mudah di-scroll) */}
         <div 
           onMouseMove={handleDevelop}
           onTouchMove={handleDevelop}
           onClick={handleQuickTap}
-          className="bg-[#faf6f0] p-3.5 pb-10 rounded shadow-lg border border-black/5 w-[260px] sm:w-[280px] -rotate-1 relative cursor-pointer touch-none select-none transition-transform hover:rotate-0"
+          className={`bg-[#faf6f0] p-3.5 pb-10 rounded shadow-lg border border-black/5 w-[260px] sm:w-[280px] -rotate-1 relative cursor-pointer select-none transition-transform hover:rotate-0 ${
+            isDeveloped ? 'touch-pan-y' : 'touch-none'
+          }`}
         >
           {/* Bingkai Dalam Foto */}
           <div className="relative w-full h-[210px] bg-[#22201e] overflow-hidden rounded-sm flex items-center justify-center">
             
-            {/* GAMBAR ASLI: Ganti URL src ini dengan foto kalian saat KKN di Arjosari */}
             <img
               src="/assets/kenangan.jpeg"
               alt="Memori KKN Arjosari"

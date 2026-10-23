@@ -12,7 +12,8 @@ export default function Page2Smile() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between py-2 relative overflow-hidden">
+    /* PERUBAHAN DI SINI: min-h-full + gap-4 + pb-6 tanpa overflow-hidden */
+    <div className="w-full min-h-full flex flex-col justify-between gap-4 py-2 pb-6 relative">
       
       {/* ================= STIKER BERANIMASI ================= */}
       {/* Stiker Kamera (Kanan Atas - Bisa Di-drag) */}
@@ -57,7 +58,6 @@ export default function Page2Smile() {
           className="relative bg-[#faf6f0] p-3 pb-8 rounded-lg shadow-lg border border-black/5 w-[255px] sm:w-[275px] rotate-1 cursor-pointer select-none group"
         >
           <div className="relative w-full h-[215px] overflow-hidden rounded bg-[#e6dac8]">
-            {/* GAMBAR: Ganti URL ini dengan foto dia sedang tersenyum paling manis */}
             <img
               src="/assets/senyum.jpeg"
               alt="Senyuman Manis"
@@ -81,8 +81,6 @@ export default function Page2Smile() {
                   viewBox="0 0 260 220"
                   fill="none"
                 >
-                  
-
                   {/* Panah Coretan Menunjuk ke Senyum */}
                   <motion.path
                     d="M 35 185 Q 65 170 95 140 M 82 140 L 97 138 L 95 153"

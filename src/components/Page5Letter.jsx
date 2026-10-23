@@ -19,7 +19,8 @@ export default function Page5Letter({ onRestart }) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-between py-1 relative overflow-hidden">
+    /* PERUBAHAN DI SINI: min-h-full + gap-4 + pb-6 tanpa overflow-hidden */
+    <div className="w-full min-h-full flex flex-col justify-between gap-4 py-1 pb-6 relative">
       
       {/* Header Halaman */}
       <div className="z-20 flex justify-between items-center">
