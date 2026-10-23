@@ -59,7 +59,7 @@ export default function Page2Smile() {
           <div className="relative w-full h-[215px] overflow-hidden rounded bg-[#e6dac8]">
             {/* GAMBAR: Ganti URL ini dengan foto dia sedang tersenyum paling manis */}
             <img
-              src="public/assets/senyum.jpeg"
+              src="/assets/senyum.jpeg"
               alt="Senyuman Manis"
               className="w-full h-full object-cover group-hover:scale-105 transition duration-500 pointer-events-none"
             />

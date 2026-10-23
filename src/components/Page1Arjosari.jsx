@@ -66,7 +66,7 @@ export default function Page1Arjosari() {
             
             {/* GAMBAR ASLI: Ganti URL src ini dengan foto kalian saat KKN di Arjosari */}
             <img
-              src="public/assets/kenangan.jpeg"
+              src="/assets/kenangan.jpeg"
               alt="Memori KKN Arjosari"
               style={{
                 filter: `blur(${20 - (developProgress * 0.2)}px) grayscale(${100 - developProgress}%) sepia(${40 - (developProgress * 0.4)}%)`,
